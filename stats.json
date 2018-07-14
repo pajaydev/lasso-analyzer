@@ -1,0 +1,47 @@
+[
+    {
+        "type": "def",
+        "fileName": "src/Greeter.ts",
+        "packageName": "lasso-js-api",
+        "content": "{\n}",
+        "version": "0.0.0",
+        "size": 111,
+        "path": "/lasso-js-api$0.0.0/src/Greeter.ts"
+    },
+    {
+        "type": "def",
+        "fileName": "src/main",
+        "packageName": "lasso-js-api",
+        "content": "{\n    var add = require('/lasso-js-api$0.0.0/src/add'/*'./add'*/);\n    var jquery = require('/jquery$2.2.4/dist/jquery'/*'jquery'*/);\n    var Greeter = require('/lasso-js-api$0.0.0/src/Greeter.ts'/*'./Greeter.ts'*/);\n\n    jquery(function () {\n        $(document.body).append('2+2=' + add(2, 2));\n        //console.log(greeter);\n        var greeter = new Greeter(\"Ajaykumar\");\n        $(document.body).append(greeter.greet());\n    });\n\n}",
+        "version": "0.0.0",
+        "size": 538,
+        "path": "/lasso-js-api$0.0.0/src/main"
+    },
+    {
+        "type": "installed",
+        "fileName": "jquery",
+        "packageName": "myebaynode$1.0.0",
+        "content": "",
+        "version": "3.3.1",
+        "size": 54,
+        "path": ""
+    },
+    {
+        "type": "installed",
+        "fileName": "lodash.get",
+        "packageName": "@ebay/retriever$1.0.0",
+        "content": "",
+        "version": "4.4.2",
+        "size": 63,
+        "path": ""
+    },
+    {
+        "type": "main",
+        "fileName": "/src/components/utils/resize-listener",
+        "packageName": "highlnfe",
+        "content": "",
+        "version": "16.4.2",
+        "size": 71,
+        "path": "/highlnfe$16.4.2/src/components/utils/resize-listener"
+    }
+]
