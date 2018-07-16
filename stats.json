@@ -16,32 +16,5 @@
         "version": "0.0.0",
         "size": 538,
         "path": "/lasso-js-api$0.0.0/src/main"
-    },
-    {
-        "type": "installed",
-        "fileName": "jquery",
-        "packageName": "myebaynode$1.0.0",
-        "content": "",
-        "version": "3.3.1",
-        "size": 54,
-        "path": ""
-    },
-    {
-        "type": "installed",
-        "fileName": "lodash.get",
-        "packageName": "@ebay/retriever$1.0.0",
-        "content": "",
-        "version": "4.4.2",
-        "size": 63,
-        "path": ""
-    },
-    {
-        "type": "main",
-        "fileName": "/src/components/utils/resize-listener",
-        "packageName": "highlnfe",
-        "content": "",
-        "version": "16.4.2",
-        "size": 71,
-        "path": "/highlnfe$16.4.2/src/components/utils/resize-listener"
     }
 ]
