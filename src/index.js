@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const lassoUnpack = require('lasso-unpack');
 const Tree = require('./tree');
 const borderX = `${Array(30).join('-')}\n`;
 
@@ -12,17 +13,17 @@ function bundleAnalyzer(fileName) {
     const log = `${borderX}` + `Lasso Bundle Analyzer \n` +
         `${borderX}`;
     console.log(log);
-    const readFile = fs.readFileSync(path.resolve(fileName), 'utf8');
+    // unpack the bundle using lasso-unpack.
+    lassoUnpack(fileName);
+    const readFile = fs.readFileSync(path.resolve("lasso-stats.json"), 'utf8');
     const readJSON = JSON.parse(readFile);
     const tree = new Tree('/');
     readJSON.forEach((source) => {
         tree.addNodeToTree(source, tree);
     });
-
-    console.log(tree);
 }
 
-bundleAnalyzer('stats.json')
+bundleAnalyzer('src/build.js');
 
 
 

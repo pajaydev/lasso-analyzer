@@ -1,21 +1,23 @@
 // Inspired from https://github.com/evmar/webtreemap/blob/master/tree.ts
 
 class Tree {
-    constructor(options) {
-        this.packageName = options.packageName || '';
+    constructor(fileName) {
+        this.name = fileName || '';
         //https://github.com/evmar/webtreemap/blob/master/oldapi.ts#L10
-        this.size = {
-            '$area': options.size || 0
+        this.data = {
+            '$area': 0
         };
-        this.children = options.children || [];
-        this.path = options.path || '/';
+        this.children = [];
     }
 
-    setPackageName(name) {
-        this.packageName = name;
+    setFileName(name) {
+        this.name = name;
+    }
+    getFileName() {
+        return this.name;
     }
     setSize(size) {
-        this.size.$area = size;
+        this.data.$area = size;
     }
     setChildren(children) {
         this.children.push(children);
@@ -24,25 +26,24 @@ class Tree {
         this.path = path;
     }
     getSize() {
-        return this.size.$area;
+        return this.data.$area;
     }
     // add new nodes 
     addNodeToTree(source, tree) {
-        console.log("inside add node" + source.path);
         const parts = source.path.split('/');
-        let node = tree;
-        const nodeSize = node.getSize();
-        node.setPackageName(source.packageName);
-        node.setSize(nodeSize + source.size);
+        var node = tree;
+        node.data['$area'] += source.size;
         parts.forEach(function (part) {
-            var child = node.children.find(function (child) { return child.name == part; });
+            var child = node.children.find(function (child) {
+                return child.name == part;
+            });
             if (!child) {
                 var child = new Tree(part);
                 node.children.push(child);
             }
-            node = new Tree(child);
+            node = child;
+            node.data['$area'] += source.size;
         });
-        //console.log(tree);
     };
 };
 
