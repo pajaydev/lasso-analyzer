@@ -23,11 +23,38 @@ function bundleAnalyzer(fileName) {
     });
 
     tree.createTile(tree, tree.data['$area']);
-    const webtreeJs = fs.readFileSync(path.resolve('static/webtreemap.js'));
-    const webtreeCss = fs.readFileSync(path.resolve('static/webtreemap.css'));
-    const lassoHTML = fs.readFileSync(path.resolve('static/lasso-analyze.html')).toString();
+    generateHTML(tree);
+
+    //console.log(lassoHTML);
+}
+
+function generateHTML(tree) {
+
+
+    let lassoHTML = fs.readFileSync(path.resolve('static/lasso-analyze.html')).toString();
+
+    lassoHTML = replaceJS(lassoHTML);
+    lassoHTML = replaceCSS(lassoHTML);
     console.log(lassoHTML);
-    //console.log(tree);
+
+    const treeToString = JSON.stringify(tree).replace(/"/g, '\'');
+    //console.log(treeToString);
+    lassoHTML = lassoHTML.replace('---LASSOTREEDATA---', treeToString);
+    fs.writeFileSync(process.cwd() + '/lasso-analyze.html', lassoHTML);
+
+}
+
+function replaceJS(lassoHTML) {
+    const webtreeJs = fs.readFileSync(path.resolve('static/webtreemap.js'), 'utf8');
+    const data = '<script type="text/javascript">' + webtreeJs + '</script>';
+    lassoHTML = lassoHTML.replace('<!-- @@WEBTREEMAPJS -->', data);
+    return lassoHTML;
+}
+
+function replaceCSS(lassoHTML) {
+    const webtreeCss = fs.readFileSync(path.resolve('static/webtreemap.css'), 'utf8');
+    lassoHTML = lassoHTML.replace('<!-- @@WEBTREEMAPCSS -->', webtreeCss);
+    return lassoHTML;
 }
 
 bundleAnalyzer('src/build.js');
