@@ -29,20 +29,29 @@ class Tree {
         return this.data.$area;
     }
     // add new nodes 
-    addNodeToTree(source, tree) {
+    createNode(source, tree) {
         const parts = source.path.split('/');
         var node = tree;
         node.data['$area'] += source.size;
         parts.forEach(function (part) {
-            var child = node.children.find(function (child) {
+            let child = node.children.find(function (child) {
                 return child.name == part;
             });
             if (!child) {
-                var child = new Tree(part);
+                child = new Tree(part);
                 node.children.push(child);
             }
             node = child;
             node.data['$area'] += source.size;
+        });
+    };
+
+    createTile(node, totalSize) {
+        const size = node.data['$area'];
+        const percentage = 100.0 * size / totalSize;
+        node.name += ' • ' + size.toLocaleString() + ' • ' + percentage.toFixed(2) + '%';
+        node.children.forEach((eachNode) => {
+            this.createTile(eachNode, totalSize)
         });
     };
 };

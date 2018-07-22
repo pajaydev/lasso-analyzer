@@ -19,21 +19,15 @@ function bundleAnalyzer(fileName) {
     const readJSON = JSON.parse(readFile);
     const tree = new Tree('/');
     readJSON.forEach((source) => {
-        tree.addNodeToTree(source, tree);
+        tree.createNode(source, tree);
     });
+
+    tree.createTile(tree, tree.data['$area']);
+    const webtreeJs = fs.readFileSync(path.resolve('static/webtreemap.js'));
+    const webtreeCss = fs.readFileSync(path.resolve('static/webtreemap.css'));
+    const lassoHTML = fs.readFileSync(path.resolve('static/lasso-analyze.html')).toString();
+    console.log(lassoHTML);
+    //console.log(tree);
 }
 
 bundleAnalyzer('src/build.js');
-
-
-
-// https://stackoverflow.com/a/18650828/388951
-function formatBytes(bytes, decimals) {
-    if (bytes == 0) return '0 B';
-    let k = 1000,
-        dm = decimals || 2,
-        sizes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
-        i = Math.floor(Math.log(bytes) / Math.log(k));
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
-}
-
