@@ -35,6 +35,13 @@
 <body>
     <div id='map'></div>
     <!-- @@WEBTREEMAPJS -->
+    <script>
+        var treeData = @@WEBTREEMAPDATA;
+        appendTreemap(map, treeData);
+        window.addEventListener('resize', function () {
+            appendTreemap(map, treeData);
+        });
+    </script>
 </body>
 
 </html>
