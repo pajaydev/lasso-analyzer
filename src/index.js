@@ -31,7 +31,9 @@ function bundleAnalyzer(fileName) {
 
 function generateHTML(tree) {
     let lassoHTML = fs.readFileSync(path.resolve('static/lasso-analyze.html')).toString();
+    // Insert webtreemap js in to lasso html.
     lassoHTML = replaceJS(lassoHTML);
+    // Insert webtreemap css in to lasso html
     lassoHTML = replaceCSS(lassoHTML);
     lassoHTML = replaceTreeDate(lassoHTML, tree);
     return lassoHTML;
@@ -56,5 +58,3 @@ function replaceTreeDate(lassoHTML, treeData) {
 }
 
 module.exports = bundleAnalyzer;
-
-bundleAnalyzer('src/build.js');
