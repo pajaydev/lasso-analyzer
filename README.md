@@ -25,6 +25,8 @@ lasso-analyzer build/static/index.js
 ``` bash
 open lasso-analyze.html
 ```
+4. It shows you a treemap visualization as shown below.
+
 ## Command-Line Interface Support ##
 
 ``` bash

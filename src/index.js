@@ -30,7 +30,7 @@ function bundleAnalyzer(fileName) {
 }
 
 function generateHTML(tree) {
-    let lassoHTML = fs.readFileSync(path.resolve('static/lasso-analyze.html')).toString();
+    let lassoHTML = fs.readFileSync(require.resolve('../static/lasso-analyze.html')).toString();
     // Insert webtreemap js in to lasso html.
     lassoHTML = replaceJS(lassoHTML);
     // Insert webtreemap css in to lasso html
@@ -40,14 +40,14 @@ function generateHTML(tree) {
 };
 
 function replaceJS(lassoHTML) {
-    const webtreeJs = fs.readFileSync(path.resolve('static/webtreemap.js'), 'utf8');
+    const webtreeJs = fs.readFileSync(require.resolve('../static/webtreemap.js'), 'utf8');
     const data = '<script type="text/javascript">' + webtreeJs + '</script>';
     lassoHTML = lassoHTML.replace('<!-- @@WEBTREEMAPJS -->', data);
     return lassoHTML;
 };
 
 function replaceCSS(lassoHTML) {
-    const webtreeCss = fs.readFileSync(path.resolve('static/webtreemap.css'), 'utf8');
+    const webtreeCss = fs.readFileSync(require.resolve('../static/webtreemap.css'), 'utf8');
     lassoHTML = lassoHTML.replace('<!-- @@WEBTREEMAPCSS -->', webtreeCss);
     return lassoHTML;
 };
