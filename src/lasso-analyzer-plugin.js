@@ -1,6 +1,7 @@
 const lasso = require('lasso');
 const fs = require('fs');
 const path = require('path');
+const lassoAnalyzer = require('./index');
 const isDevelopment =
     !process.env.NODE_ENV ||
     process.env.NODE_ENV === 'development' ||
@@ -17,7 +18,14 @@ module.exports = (lasso, config) => {
         // events.push('beforeBuildPage');
 
         context.on('bundleWritten', (event) => {
-            console.log(event);
+            const bundle = event.bundle;
+            if (bundle.contentType === "js" && isDevelopment) {
+                const fileName = getFileName(bundle);
+                // read the output bundle 
+                const bundleFile = bundle.outputFile;
+                // pass it to lasso-analyzer.
+                lassoAnalyzer(bundle.outputFile);
+            }
         });
     });
 };
