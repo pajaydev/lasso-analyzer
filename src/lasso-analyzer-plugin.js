@@ -7,8 +7,6 @@ const isDevelopment =
     process.env.NODE_ENV === 'development' ||
     process.env.NODE_ENV === 'dev';
 
-console.log(isDevelopment);
-
 module.exports = (lasso, config) => {
     lasso.on('beforeBuildPage', (event) => {
         // make bundle enabled = true.
