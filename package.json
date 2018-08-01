@@ -1,13 +1,14 @@
 {
   "name": "lasso-analyzer",
-  "version": "1.0.0",
+  "version": "1.1.3",
   "description": "A tool to analyze the bundle created by Lasso",
-  "main": "src/index.js",
+  "main": "src/lasso-analyzer-plugin.js",
   "bin": {
     "lasso-analyzer": "bin/index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run jshint",
+    "jshint": "jshint"
   },
   "dependencies": {
     "lasso-unpack": "1.0.1"
@@ -26,5 +27,8 @@
     "visualize"
   ],
   "author": "Ajaykumar Prathap",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "jshint": "^2.9.6"
+  }
 }
