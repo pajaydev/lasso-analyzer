@@ -13,14 +13,33 @@ This package uses [treemap](#https://github.com/evmar/webtreemap) for visualizti
 npm install -g lasso-analyzer
 ```
 
-## Usage ##
+## Usage as plugin ##
 
+```js
+require('lasso').configure({
+    ...
+    plugins: [
+        'lasso-analyzer',
+        ...
+    ]
+});
+```
+Creates lasso-analyze.html in your project directory.
+
+## Usage as CLI ##
 1. make the bundlingEnabled flag to true in config.json
 ``` bash
 "bundlingEnabled": true,
 "outputDir": "build/static/",
 ```
 2. Bundled file is created under "build/static/" folder. Run the CLI as shown below
+
+```bash
+lasso-analyzer <--bundle path-->
+```
+![webpack bundle analyzer zoomable treemap](/Users/aprathap/Documents/git/lasso-analyzer/example/lasso-analyzer.gif)
+For Example:
+
 ``` bash
 lasso-analyzer build/static/index.js
 ```
@@ -31,11 +50,6 @@ open lasso-analyze.html
 ```
 4. It shows you a treemap visualization as shown below.
 
-## Command-Line Interface Support ##
-
-``` bash
-lasso-analyzer <--bundle file path-->
-```
 
 ## Issues ##
 Free feel to create bug or propose improvements.
