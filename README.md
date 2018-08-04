@@ -37,7 +37,7 @@ Creates lasso-analyze.html in your project directory.
 ```bash
 lasso-analyzer <--bundle path-->
 ```
-![webpack bundle analyzer zoomable treemap](/Users/aprathap/Documents/git/lasso-analyzer/example/lasso-analyzer.gif)
+
 For Example:
 
 ``` bash
