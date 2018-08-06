@@ -12,11 +12,6 @@ This package uses [treemap](#https://github.com/evmar/webtreemap) for visualizti
 ``` bash
 npm install -g lasso-analyzer
 ```
-
-<p align="center">
-    <img alt="lasso-analyzer" src="https://raw.githubusercontent.com/ajay2507/lasso-analyzer/master/example/lasso-analyze.png" width="512">
-</p>
-
 ## Usage as plugin ##
 
 ```js
@@ -30,6 +25,11 @@ require('lasso').configure({
 ```
 Creates lasso-analyze.html in your project directory.
 
+
+<p align="center">
+    <img alt="lasso-analyzer" src="https://raw.githubusercontent.com/ajay2507/lasso-analyzer/master/example/lasso-analyze.png" width="512">
+</p>
+
 ## Usage as CLI ##
 1. make the bundlingEnabled flag to true in config.json
 ``` bash
@@ -41,6 +41,7 @@ Creates lasso-analyze.html in your project directory.
 ```bash
 lasso-analyzer <--bundle path-->
 ```
+
 For Example:
 
 ``` bash
