@@ -13,8 +13,6 @@ module.exports = (lasso, config) => {
         event.config.bundlingEnabled = true;
         // console.log(process);
         const context = event.context;
-        // events.push('beforeBuildPage');
-
         context.on('bundleWritten', (event) => {
             const bundle = event.bundle;
             if (bundle.contentType === "js" && isDevelopment) {
@@ -22,8 +20,16 @@ module.exports = (lasso, config) => {
                 // read the output bundle 
                 const bundleFile = bundle.outputFile;
                 // pass it to lasso-analyzer.
-                lassoAnalyzer(bundle.outputFile);
+                if (bundle.outputFile) {
+                    lassoAnalyzer(bundle.outputFile);
+                }
+
             }
         });
     });
+};
+
+function getFileName(bundle) {
+    const fingerprint = bundle.fingerprint || '';
+    return bundle.name + '-' + fingerprint + ".js";
 };
