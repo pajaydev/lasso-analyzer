@@ -28,8 +28,10 @@ module.exports = (lasso, config) => {
                     bundlePath = outputFile;
                 }
                 // pass it to lasso-analyzer.
+
                 if (bundlePath) {
                     lassoAnalyzer(bundlePath, bundleName);
+
                 }
 
             }
@@ -41,3 +43,4 @@ module.exports = (lasso, config) => {
 function getBundleName(bundleName) {
     return bundleName.split('/')[0];
 }
+
