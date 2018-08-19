@@ -9,19 +9,29 @@ const isDevelopment =
 
 module.exports = (lasso, config) => {
     lasso.on('beforeBuildPage', (event) => {
-        // make bundle enabled = true.
-        event.config.bundlingEnabled = true;
-        // console.log(process);
         const context = event.context;
         context.on('bundleWritten', (event) => {
             const bundle = event.bundle;
-            if (bundle.contentType === "js" && isDevelopment) {
-                const fileName = getFileName(bundle);
-                // read the output bundle 
-                const bundleFile = bundle.outputFile;
+            let bundlePath = bundle.outputFile;
+            if (bundle.contentType === "js" && isDevelopment && bundlePath) {
+                const fileContent = fs.readFileSync(bundle.outputFile, 'utf8');
+                // if bundleEnabled = false, iterate through all files.
+                if (!bundle.fingerprint && bundlePath) {
+                    bundleName = getBundleName(bundle.name);
+                    const filePath = path.resolve(bundleName + ".js");
+                    const outputFile = process.cwd() + '/' + bundleName + '.js';
+                    if (fs.existsSync(filePath) == true) {
+                        fs.appendFileSync(outputFile, fileContent);
+                    } else {
+                        fs.writeFileSync(outputFile, fileContent);
+                    }
+                    bundlePath = outputFile;
+                }
                 // pass it to lasso-analyzer.
-                if (bundle.outputFile) {
-                    lassoAnalyzer(bundle.outputFile);
+
+                if (bundlePath) {
+                    lassoAnalyzer(bundlePath, bundleName);
+
                 }
 
             }
@@ -29,7 +39,8 @@ module.exports = (lasso, config) => {
     });
 };
 
-function getFileName(bundle) {
-    const fingerprint = bundle.fingerprint || '';
-    return bundle.name + '-' + fingerprint + ".js";
-};
+// get bundle name from output path.
+function getBundleName(bundleName) {
+    return bundleName.split('/')[0];
+}
+

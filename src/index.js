@@ -5,7 +5,7 @@ const Tree = require('./tree');
 const borderX = `${Array(30).join('-')}\n`;
 
 
-function bundleAnalyzer(fileName) {
+function bundleAnalyzer(fileName, bundleName) {
     // load lasso-unpack and create lasso-stats.json
     const startLog = `${borderX}` + `Lasso Bundle Analyzer \n` +
         `${borderX}`;
@@ -23,11 +23,16 @@ function bundleAnalyzer(fileName) {
     });
     tree.createTile(tree, tree.data['$area']);
     const html = generateHTML(tree);
-    fs.writeFileSync(process.cwd() + '/lasso-analyze.html', html);
+    if (!bundleName) bundleName = "lasso-analyze";
+    fs.writeFileSync(getOutputHTML(bundleName), html);
     const endLog = `${borderX}` + `Created lasso-analyze.html in your project structure \n` +
         `${borderX}`;
     console.log(endLog);
-}
+};
+
+function getOutputHTML(bundleName) {
+    return process.cwd() + '/' + bundleName + ".html";
+};
 
 function generateHTML(tree) {
     let lassoHTML = fs.readFileSync(require.resolve('../static/lasso-analyze.html')).toString();
