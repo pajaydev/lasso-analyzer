@@ -2,8 +2,6 @@ const fs = require('fs');
 const path = require('path');
 const lassoUnpack = require('lasso-unpack');
 const Tree = require('./tree');
-const borderX = `${Array(30).join('-')}\n`;
-
 
 function bundleAnalyzer(fileName, bundleName) {
     // load lasso-unpack and create lasso-stats.json
@@ -22,11 +20,22 @@ function bundleAnalyzer(fileName, bundleName) {
     const html = generateHTML(tree);
     if (!bundleName) bundleName = "lasso-analyze";
     fs.writeFileSync(getOutputHTML(bundleName), html);
-    // remove bundle js
-    fs.unlinkSync(process.cwd() + '/' + bundleName + '.js');
-    // remove lasso-stats.json
-    fs.unlinkSync(process.cwd() + '/lasso-stats.json');
+    // clean files
+    cleanFiles(bundleName);
 };
+
+function cleanFiles(bundleName) {
+    const jsFile = process.cwd() + '/' + bundleName + '.js';
+    const jsonFile = process.cwd() + '/lasso-stats.json';
+    // remove bundle js
+    if (fs.existsSync(jsFile)) {
+        fs.unlinkSync(jsFile);
+    }
+    // remove lasso-stats.json
+    if (fs.existsSync(jsonFile)) {
+        fs.unlinkSync(jsonFile);
+    }
+}
 
 function getOutputHTML(bundleName) {
     return process.cwd() + '/' + bundleName + ".html";
