@@ -10,9 +10,6 @@ const isDevelopment =
 
 module.exports = (lasso, config) => {
     lasso.on('beforeBuildPage', (event) => {
-        const startLog = `${borderX}` + `Lasso Bundle Analyzer \n` +
-            `${borderX}`;
-        console.log(startLog);
         const context = event.context;
         context.on('bundleWritten', (event) => {
             const bundle = event.bundle;
