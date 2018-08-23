@@ -2,6 +2,7 @@ const lasso = require('lasso');
 const fs = require('fs');
 const path = require('path');
 const lassoAnalyzer = require('./index');
+const borderX = `${Array(30).join('-')}\n`;
 const isDevelopment =
     !process.env.NODE_ENV ||
     process.env.NODE_ENV === 'development' ||
@@ -9,6 +10,9 @@ const isDevelopment =
 
 module.exports = (lasso, config) => {
     lasso.on('beforeBuildPage', (event) => {
+        const startLog = `${borderX}` + `Lasso Bundle Analyzer \n` +
+            `${borderX}`;
+        console.log(startLog);
         const context = event.context;
         context.on('bundleWritten', (event) => {
             const bundle = event.bundle;
@@ -34,6 +38,9 @@ module.exports = (lasso, config) => {
 
             }
         });
+        const endLog = `${borderX}` + `Created lasso-analyze.html in your project structure \n` +
+            `${borderX}`;
+        console.log(endLog);
     });
 };
 

@@ -7,9 +7,6 @@ const borderX = `${Array(30).join('-')}\n`;
 
 function bundleAnalyzer(fileName, bundleName) {
     // load lasso-unpack and create lasso-stats.json
-    const startLog = `${borderX}` + `Lasso Bundle Analyzer \n` +
-        `${borderX}`;
-    console.log(startLog);
     // unpack the bundle using lasso-unpack.
     lassoUnpack(fileName);
     const readFile = fs.readFileSync(path.resolve("lasso-stats.json"), 'utf8');
@@ -25,9 +22,10 @@ function bundleAnalyzer(fileName, bundleName) {
     const html = generateHTML(tree);
     if (!bundleName) bundleName = "lasso-analyze";
     fs.writeFileSync(getOutputHTML(bundleName), html);
-    const endLog = `${borderX}` + `Created lasso-analyze.html in your project structure \n` +
-        `${borderX}`;
-    console.log(endLog);
+    // remove bundle js
+    fs.unlinkSync(process.cwd() + '/' + bundleName + '.js');
+    // remove lasso-stats.json
+    fs.unlinkSync(process.cwd() + '/lasso-stats.json');
 };
 
 function getOutputHTML(bundleName) {
