@@ -49,11 +49,21 @@ class Tree {
     createTile(node, totalSize) {
         const size = node.data['$area'];
         const percentage = 100.0 * size / totalSize;
-        node.name += ' • ' + size.toLocaleString() + ' • ' + percentage.toFixed(2) + '%';
+        node.name += ' • ' + bytesToSize(size) + ' • ' + percentage.toFixed(1) + '%';
         node.children.forEach((eachNode) => {
             this.createTile(eachNode, totalSize)
         });
     };
 };
+// convert bytes in to KB, MB, etc.
+// https://stackoverflow.com/a/18650828/388951
+function bytesToSize(bytes, decimals) {
+    if (bytes == 0) return '0 B';
+    let k = 1000,
+        dm = decimals || 2,
+        sizes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
+        i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+}
 
 module.exports = Tree;
