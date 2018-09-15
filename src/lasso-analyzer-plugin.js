@@ -19,9 +19,12 @@ module.exports = (lasso, config) => {
                 // if bundleEnabled = false, iterate through all files.
                 if (!bundle.fingerprint && bundlePath) {
                     bundleName = getBundleName(bundle.name);
-                    const filePath = path.resolve(bundleName + ".js");
-                    const outputFile = process.cwd() + '/' + bundleName + '.js';
-                    if (fs.existsSync(filePath) == true) {
+                    //const filePath = path.resolve(bundleName + ".js");
+                    const filePath = __dirname.split(path.sep);
+                    filePath.pop();
+                    const outputFile = dirName.join(path.sep) + '/' + bundleName + '.js';
+                    //const outputFile = process.cwd() + '/' + bundleName + '.js';
+                    if (fs.existsSync(outputFile) == true) {
                         fs.appendFileSync(outputFile, fileContent);
                     } else {
                         fs.writeFileSync(outputFile, fileContent);
