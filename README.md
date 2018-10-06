@@ -31,12 +31,8 @@ Creates lasso-analyze.html in your project directory.
 </p>
 
 ## Usage as CLI ##
-1. make the bundlingEnabled flag to true in config.json
-``` bash
-"bundlingEnabled": true,
-"outputDir": "build/static/",
-```
-2. Bundled file is created under "build/static/" folder. Run the CLI as shown below
+
+1. Bundled file is created under "build/static/" folder. Run the CLI as shown below
 
 ```bash
 lasso-analyzer <--bundle path-->
@@ -44,15 +40,24 @@ lasso-analyzer <--bundle path-->
 
 For Example:
 
+a. Options to provide direct Output js file.
 ``` bash
-lasso-analyzer build/static/index.js
+lasso-analyzer static/build.js
 ```
-3. lasso-analyze.html file is created in root path of your project structure.
+or
+
+b. Options to provide Output Folder like this, it iterates entire folder and create lasso-analyze.html.
+
+``` bash
+lasso-analyzer static
+```
+
+2. lasso-analyze.html file is created in root path of your project structure.
 
 ``` bash
 open lasso-analyze.html
 ```
-4. It shows you a treemap visualization as shown below.
+3. It shows you a treemap visualization as shown below.
 
 
 ## Issues ##
