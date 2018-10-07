@@ -1,6 +1,6 @@
 {
   "name": "lasso-analyzer",
-  "version": "1.1.9",
+  "version": "1.1.10",
   "description": "A tool to analyze the bundle created by Lasso",
   "main": "src/lasso-analyzer-plugin.js",
   "bin": {
@@ -12,7 +12,8 @@
     "jshint": "jshint"
   },
   "dependencies": {
-    "lasso-unpack": "1.0.2"
+    "lasso-unpack": "1.0.2",
+    "bundle-me": "~1.0.0"
   },
   "repository": {
     "type": "git",
