@@ -6,6 +6,7 @@ const Tree = require('./tree');
 function bundleAnalyzer(fileName, bundleName) {
     // load lasso-unpack and create lasso-stats.json
     // unpack the bundle using lasso-unpack.
+    let filename = "demo.js";
     lassoUnpack(fileName);
     const readFile = fs.readFileSync(path.resolve("lasso-stats.json"), 'utf8');
     const readJSON = JSON.parse(readFile);
@@ -69,4 +70,5 @@ function replaceTreeDate(lassoHTML, treeData) {
     return lassoHTML.replace('@@WEBTREEMAPDATA', treeToString);
 }
 
+bundleAnalyzer('demo.js', '');
 module.exports = bundleAnalyzer;
