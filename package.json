@@ -1,6 +1,6 @@
 {
   "name": "lasso-analyzer",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A tool to analyze the bundle created by Lasso",
   "main": "src/index.js",
   "bin": {
@@ -13,7 +13,7 @@
     "analyze": "lasso-analyzer static"
   },
   "dependencies": {
-    "bundle-me": "^1.1.2",
+    "bundle-me": "^1.1.4",
     "lasso-unpack": "1.0.2"
   },
   "repository": {
