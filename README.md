@@ -1,7 +1,7 @@
 # lasso-analyzer
 
 [![npm version](https://badge.fury.io/js/lasso-analyzer.svg)](https://badge.fury.io/js/lasso-analyzer)
-[![Build Status](https://travis-ci.org/ajay2507/lasso-analyzer.svg?branch=master)](https://travis-ci.org/pajaydev/lasso-analyzer)
+[![Build Status](https://travis-ci.org/pajaydev/lasso-analyzer.svg?branch=master)](https://travis-ci.org/pajaydev/lasso-analyzer)
 
 Lasso-analyzer is a tool for analyzing project bundles created by Lasso. We can easily catch the large and/or duplicate modules which might be either bloating up
 your bundle.

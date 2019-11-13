@@ -4,6 +4,6 @@
 .DS_Store?
 .travis.yml
 
-/src/build.js
+src/build.js
 /node_modules
-/example
+example/

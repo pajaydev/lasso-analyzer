@@ -69,5 +69,4 @@ function replaceTreeDate(lassoHTML, treeData) {
     return lassoHTML.replace('@@WEBTREEMAPDATA', treeToString);
 }
 
-bundleAnalyzer('demo.js', '');
 module.exports = bundleAnalyzer;
