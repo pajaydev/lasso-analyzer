@@ -35,18 +35,19 @@ Creates lasso-analyze.html in your project directory.
 1. Bundled file is created under "build/static/" folder. Run the CLI as shown below
 
 ```bash
-lasso-analyzer <--bundle path-->
+lasso-analyzer <--bundle path--> <--outputFilename-->
 ```
+Creates outputFilename.html in your project structure.
 
 For Example:
 
-a. Options to provide direct Output js file.
+a. Analyze js bundle file.
 ``` bash
 lasso-analyzer static/build.js
 ```
 or
 
-b. Options to provide Output Folder like this, it iterates entire folder and create lasso-analyze.html.
+b. Analyze all the files inside particular folder and create lasso-analyze.html.
 
 ``` bash
 lasso-analyzer static

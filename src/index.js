@@ -21,11 +21,11 @@ function bundleAnalyzer(fileName, bundleName) {
     if (!bundleName) bundleName = "lasso-analyze";
     fs.writeFileSync(getOutputHTML(bundleName), html);
     // clean files
-    cleanFiles(bundleName);
+    cleanFiles();
 };
 
-function cleanFiles(bundleName) {
-    const jsFile = process.cwd() + '/' + bundleName + '.js';
+function cleanFiles() {
+    const jsFile = process.cwd() + '/lasso-analyze.js';
     const jsonFile = process.cwd() + '/lasso-stats.json';
     // remove bundle js
     if (fs.existsSync(jsFile)) {
