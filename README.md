@@ -23,21 +23,20 @@ require('lasso').configure({
     ]
 });
 ```
-Creates lasso-analyze.html in your project directory.
-
-
-<p align="center">
-    <img alt="lasso-analyzer" src="https://raw.githubusercontent.com/ajay2507/lasso-analyzer/master/example/lasso-analyze.png" width="512">
-</p>
 
 ## Usage as CLI ##
 
 1. Bundled file is created under "build/static/" folder. Run the CLI as shown below
 
 ```bash
-lasso-analyzer <--bundle path--> <--outputFilename-->
+lasso-analyzer <--bundle path--> --output <--output filename-->
 ```
 Creates outputFilename.html in your project structure.
+
+```bash
+Options:
+  --output    To change the generated output filename. (default - lasso-analyze.html)
+```
 
 For Example:
 
@@ -60,6 +59,12 @@ open lasso-analyze.html
 ```
 3. It shows you a treemap visualization as shown below.
 
+## Output
+Creates lasso-analyze.html in your project directory.
+
+<p align="center">
+    <img alt="lasso-analyzer" src="https://raw.githubusercontent.com/ajay2507/lasso-analyzer/master/example/lasso-analyze.png" width="512">
+</p>
 
 ## Issues ##
 Free feel to create bug or propose improvements.

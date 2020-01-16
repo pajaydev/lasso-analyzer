@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const lassoUnpack = require('lasso-unpack');
+const opener = require('opener');
 const Tree = require('./tree');
 
 function bundleAnalyzer(fileName, bundleName) {
@@ -20,6 +21,8 @@ function bundleAnalyzer(fileName, bundleName) {
     const html = generateHTML(tree);
     if (!bundleName) bundleName = "lasso-analyze";
     fs.writeFileSync(getOutputHTML(bundleName), html);
+    // open the browser with generated html
+    opener(getOutputHTML(bundleName));
     // clean files
     cleanFiles();
 };

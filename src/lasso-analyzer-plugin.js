@@ -36,7 +36,6 @@ module.exports = (lasso, config) => {
                 if (bundlePath) {
                     lassoAnalyzer(bundlePath, bundleName);
                 }
-
             }
         });
         const endLog = `${borderX}` + `Created lasso-analyze.html in your project structure \n` +
