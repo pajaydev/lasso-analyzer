@@ -4,22 +4,23 @@ const lassoUnpack = require('lasso-unpack');
 const opener = require('opener');
 const Tree = require('./tree');
 
-function bundleAnalyzer(fileName, bundleName) {
+function bundleAnalyzer(fileName, options) {
     // load lasso-unpack and create lasso-stats.json
     // unpack the bundle using lasso-unpack.
     lassoUnpack(fileName);
     const readFile = fs.readFileSync(path.resolve("lasso-stats.json"), 'utf8');
     const readJSON = JSON.parse(readFile);
+    const bundleName = (options && options.bundleName) || 'lasso-analyze'
     if (readJSON.length > 0) {
         readJSON.shift()
     };
     const tree = new Tree('/');
+    tree.setEnableColors(options && options.colors || false);
     readJSON.forEach((source) => {
-        tree.createNode(source, tree);
+        tree.createNode(source, tree, tree.isColorEnabled());
     });
     tree.createTile(tree, tree.data['$area']);
     const html = generateHTML(tree);
-    if (!bundleName) bundleName = "lasso-analyze";
     fs.writeFileSync(getOutputHTML(bundleName), html);
     // open the browser with generated html
     opener(getOutputHTML(bundleName));

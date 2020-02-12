@@ -1,2 +1,4 @@
 node_modules
 .DS_Store
+lasso-analyze.html
+.vscode/

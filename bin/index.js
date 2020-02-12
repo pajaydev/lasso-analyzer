@@ -10,11 +10,13 @@ const borderX = `${Array(30).join('-')}\n`;
 const input = argv._ || [];
 // extract output file.
 let outputFile = parseArgs(process.argv).output;
+let colors = parseArgs(process.argv).c;
+colors = colors ? true : false;
 
 if (input.length > 0) {
     input.map((fileName) => {
         createBundle({ path: fileName, outputPath: 'lasso-analyze.js' }).createBundle;
-        lassoAnalyzer('lasso-analyze.js', outputFile);
+        lassoAnalyzer('lasso-analyze.js', { outputFile, colors });
     });
     outputFile = outputFile || 'lasso-analyze';
     const startLog = `${borderX}` + `${outputFile}.html is created \n` +
