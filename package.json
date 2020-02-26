@@ -1,6 +1,6 @@
 {
   "name": "lasso-analyzer",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "description": "A tool to analyze the bundle created by Lasso",
   "main": "src/index.js",
   "bin": {
@@ -29,7 +29,8 @@
     "tree",
     "size",
     "lasso",
-    "visualize"
+    "visualize",
+    "bundle"
   ],
   "author": "Ajaykumar Prathap",
   "license": "MIT",
