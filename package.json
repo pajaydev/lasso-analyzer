@@ -29,7 +29,8 @@
     "tree",
     "size",
     "lasso",
-    "visualize"
+    "visualize",
+    "bundle"
   ],
   "author": "Ajaykumar Prathap",
   "license": "MIT",
