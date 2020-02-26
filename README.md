@@ -68,10 +68,11 @@ open lasso-analyze.html
 3. It shows you a treemap visualization as shown below.
 
 ## Output
+
 Creates lasso-analyze.html in your project directory.
 
 <p align="center">
-    <img alt="lasso-analyzer" src="https://raw.githubusercontent.com/ajay2507/lasso-analyzer/master/example/lasso-analyze.png" width="512">
+    <img alt="lasso-analyzer" src="https://raw.githubusercontent.com/ajay2507/lasso-analyzer/master/example/demo.png" width="512">
 </p>
 
 ## Issues ##
