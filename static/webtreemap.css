@@ -1,5 +1,10 @@
 /* Vendored from https://github.com/rmmh/webtreemap/blob/9fa0c066a10ea4402d960b0c6c1a432846ac7fc4/webtreemap.css */
 
+#map {
+  height: 1200px;
+  width: 1600px;
+}
+
 .webtreemap-node {
   /* Required attributes. */
   position: absolute;

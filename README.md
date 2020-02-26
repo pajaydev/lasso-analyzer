@@ -36,6 +36,7 @@ Creates outputFilename.html in your project structure.
 ```bash
 Options:
   --output    To change the generated output filename. (default - lasso-analyze.html)
+  --c         Visualize the bundle with colors 
 ```
 
 For Example:
@@ -52,11 +53,18 @@ b. Analyze all the files inside particular folder and create lasso-analyze.html.
 lasso-analyzer static
 ```
 
+c. Bundle with colors
+
+```bash
+lasso-analyzer static --c
+```
+
 2. lasso-analyze.html file is created in root path of your project structure.
 
 ``` bash
 open lasso-analyze.html
 ```
+
 3. It shows you a treemap visualization as shown below.
 
 ## Output
