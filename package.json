@@ -1,7 +1,7 @@
 {
   "name": "lasso-analyzer",
-  "version": "1.4.4",
-  "description": "A tool to analyze the bundle created by Lasso",
+  "version": "1.4.5",
+  "description": "A tool to analyze and visualize the bundle created by Lasso",
   "main": "src/index.js",
   "bin": {
     "lasso-analyzer": "bin/index.js"
@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "bundle-me": "^1.1.4",
-    "lasso-unpack": "1.0.2",
+    "lasso-unpack": "^1.3.2",
     "opener": "^1.5.1",
     "randomcolor": "^0.5.4"
   },
